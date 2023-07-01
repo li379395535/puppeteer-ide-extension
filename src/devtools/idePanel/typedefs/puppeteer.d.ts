@@ -2573,3 +2573,4 @@ declare namespace puppeteer {
 }
 
 declare const page: puppeteer.Page;
+declare const browser: puppeteer.Browser;

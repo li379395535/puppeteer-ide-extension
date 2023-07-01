@@ -41,7 +41,7 @@ export async function executeScript(
     },
   };
   const AsyncFunction = Object.getPrototypeOf(async () => {}).constructor;
-  const executor = new AsyncFunction('page', 'console', script);
+  const executor = new AsyncFunction('browser', 'page', 'console', script);
 
   const ideTransport = new IDEMessageTransport(source);
   const browser = await puppeteer.connect({
@@ -68,7 +68,7 @@ export async function executeScript(
   };
 
   try {
-    await executor(page, console);
+    await executor(browser, page, console);
     await close();
   } catch (e) {
     window.console.error(e);
